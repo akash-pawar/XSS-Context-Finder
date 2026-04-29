@@ -13,7 +13,7 @@ A simple, powerful, and lightweight JavaScript bookmarklet designed for Bug Boun
 2. Name it: `XSS Context Finder 🛡️`
 3. Paste the following code into the **URL/Address** field:
 
-[PASTE THE DEEP SCAN JAVASCRIPT CODE HERE]
+[PASTE THE DEEP SCAN JAVASCRIPT CODE FROM bookmark_code.js]
 
 ### 🛠️ How to Use
 1. Visit the target website.
