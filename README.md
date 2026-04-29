@@ -1,26 +1,58 @@
 # 🔍 XSS Context Finder (Bookmarklet)
 
-A simple, powerful, and lightweight JavaScript bookmarklet designed for Bug Bounty hunters and Pentesters. It helps you find exactly where your payload is reflecting in the live DOM, including hidden attributes and deep-nested elements.
+[![Security](https://img.shields.io/badge/Security-BugBounty-red.svg)](https://github.com/YourUsername/XSS-Context-Finder)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-### ✨ Features
-- **Deep Scan:** Recursively searches through all DOM nodes (Text and Attributes).
-- **Context Awareness:** Tells you if the reflection is in a `tag`, `attribute`, or `script` block.
-- **Bypass Filters:** Helps you identify which characters are being filtered or encoded by the application.
-- **Clean UI:** Opens a new tab with a highlighted report of all reflections.
+**XSS Context Finder** is a lightweight JavaScript bookmarklet designed specifically for manual XSS (Cross-Site Scripting) hunting. It scans the "Live DOM" of the current webpage to identify exactly where and how your payload is reflecting in real-time.
 
-### 🚀 How to Install
-1. Create a new bookmark in your browser.
-2. Name it: `XSS Context Finder 🛡️`
-3. Paste the following code into the **URL/Address** field:
+---
 
-[PASTE THE DEEP SCAN JAVASCRIPT CODE FROM bookmark_code.js]
+## 🚀 Why Use This Tool?
 
-### 🛠️ How to Use
-1. Visit the target website.
-2. Inject a unique string or payload (e.g., `akash123` or `/'}">akash`).
-3. Click the bookmark.
-4. Enter your unique string in the prompt.
-5. Analyze the report to find breaking points for XSS!
+When hunting for **DOM-based XSS** or **Reflected XSS**, the standard `View Source (Ctrl+U)` often fails because it only shows the raw server response, not the modifications made by client-side JavaScript. 
 
-### 🤝 Contributing
-Contributions are welcome! If you have ideas to improve the scanner (like iFrame support or automated payload testing), feel free to open an issue or PR.
+This bookmarklet solves that by providing:
+- **Deep Scanning:** Recursively traverses through all Text Nodes and Attributes.
+- **Context Awareness:** Identifies if the reflection is inside an `HTML Tag`, an `Attribute` (like value, src, href), or a `Script` block.
+- **Break-Point Analysis:** Easily check if your special characters (`<`, `>`, `"`, `'`) are being filtered, encoded, or rendered raw.
+- **Zero Dependencies:** No extensions, no proxies, no heavy tools—just a single click.
+
+---
+
+## 🛠️ Installation
+
+1. Enable your browser's **Bookmarks Bar** (`Ctrl+Shift+B`).
+2. Right-click the bar and select **"Add Page"** or **"Add Bookmark"**.
+3. **Name:** `XSS Context Finder 🛡️`
+4. **URL:** Copy the minified code from the [bookmark_code.js](./bookmark_code.js) file in this repository and paste it into the URL field.
+
+---
+
+## 📖 How to Use
+
+1. Navigate to your target website.
+2. Input a unique string or payload (e.g., `test123` or `">'payload`).
+3. Submit the form or let the page render the reflection.
+4. Click the **XSS Context Finder** bookmark.
+5. Enter your unique string (e.g., `test123`) in the prompt.
+6. A new tab will open with a detailed report showing every instance of that reflection in the DOM.
+
+---
+
+## 🛡️ Example Scenario
+
+Suppose you inject: `"/><script>confirm(1)</script>`
+
+The report will show:
+- **Type:** ATTRIBUTE
+- **Tag:** `<input>`
+- **Content:** `"/><script>confirm(1)</script>`
+- **Analysis:** This confirms you have successfully broken out of the `input` attribute and injected a new tag.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! If you have ideas for features like iFrame support, automated "sink" detection, or bypass suggestions, feel free to open an **Issue** or a **Pull Request**. 
+
+**Happy Hunting!** 🚀
